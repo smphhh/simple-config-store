@@ -22,9 +22,10 @@ export class ConfigStore implements ConfigDataProvider {
         let storeCiphertextBlob = await this.dataStore.getValue(`${scope}/${key}`);
         let jsonData = await this.crypto.decryptJsonData(storeCiphertextBlob);
 
-        let clientCiphertextBlob = await this.crypto.encryptJsonData(jsonData, scopeKeyId);
+        /*let clientCiphertextBlob = await this.crypto.encryptJsonData(jsonData, scopeKeyId);
 
-        return clientCiphertextBlob;
+        return clientCiphertextBlob;*/
+        return jsonData;
     }
 
     async putValue(scope: string, key: string, value: string) {
