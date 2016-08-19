@@ -1,6 +1,10 @@
 
+function parseScopeKeyIds() {
+    return new Map();
+}
+
 export function create() {
-    let region = 'eu-west-1';
+    let region = process.env['AWS_REGION'];
 
     return {
         region: region,
@@ -8,14 +12,13 @@ export function create() {
             port: 80
         },
         configStore: {
-            masterKeyId: 'a',
-            scopeKeyIds: new Map()
+            masterKeyId: process.env['MASTER_KEY_ID'],
+            scopeKeyIds: parseScopeKeyIds()
         },
         dynamoDBDataStore: {
-            endpoint: "http://localhost:8000",
+            endpoint: undefined,
             region: region,
-            tableName: "ConfigStore"
+            tableName: process.env['DYNAMODB_TABLE_NAME']
         }
     };
-
 }

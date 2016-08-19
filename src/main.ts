@@ -6,7 +6,7 @@ import {ConfigStore} from './config_store';
 import {KmsCrypto} from './crypto';
 import {Server} from './server';
 
-let config = createConfig(process.env['CONFIG_NAME']);
+let config = createConfig(process.env['CONFIG_NAME'] || 'production');
 
 let dataStore = new DynamoDBDataStore(config.dynamoDBDataStore);
 

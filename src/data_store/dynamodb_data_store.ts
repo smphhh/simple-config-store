@@ -1,11 +1,11 @@
 
-let AWS = require('AWS');
+let AWS = require('aws-sdk');
 
 import {DataStore} from './interface';
 
 export interface Config {
     region: string;
-    endpoint: string;
+    endpoint?: string;
     tableName: string;
 }
 
@@ -32,11 +32,26 @@ export class DynamoDBDataStore implements DataStore {
     }
 
     async setValue(key: string, value: string) {
-
+        let response = await this.docClient.put({
+            TableName: this.config.tableName,
+            Item: {
+                key: key,
+                version: 1,
+                value: value
+            }
+        }).promise();
     }
 
     async getValue(key: string) {
-        return "a";
+        let response = await this.docClient.get({
+            TableName: this.config.tableName,
+            Key: {
+                key: key,
+                version: 1
+            }
+        }).promise();
+
+        return response.Item.value as string;
     }
 
     isReady() {

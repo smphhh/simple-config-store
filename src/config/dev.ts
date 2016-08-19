@@ -8,8 +8,11 @@ export function create() {
             port: 80
         },
         configStore: {
-            masterKeyId: 'a',
-            scopeKeyIds: new Map()
+            masterKeyId: 'masterKey',
+            scopeKeyIds: new Map([
+                ['scope1', 'b'],
+                ['scope2', 'd']
+            ])
         },
         dynamoDBDataStore: {
             endpoint: "http://localhost:8000",
