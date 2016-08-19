@@ -30,7 +30,7 @@ export class ConfigStore implements ConfigDataProvider {
     async putValue(scope: string, key: string, value: string) {
         let storeCiphertextBlob = await this.crypto.encryptJsonData(value, this.config.masterKeyId);
 
-        await this.dataStore.setValue(`${scope}/${key}`, value);
+        await this.dataStore.setValue(`${scope}/${key}`, storeCiphertextBlob);
     }
 
     private getScopeKeyId(scope: string) {
