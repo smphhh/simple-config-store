@@ -1,6 +1,8 @@
 
 function parseScopeKeyIds() {
-    return new Map();
+    return new Map([
+        ['scope1', 'a']
+    ]);
 }
 
 export function create() {
