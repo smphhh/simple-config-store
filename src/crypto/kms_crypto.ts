@@ -16,22 +16,24 @@ export class KmsCrypto implements Crypto {
         this.kms = new AWS.KMS({ region: config.region });
     }
 
-    async encryptJsonData(data: any, keyId: string) {
+    async encryptJsonData(data: any, keyId: string, additionalContext?: string) {
         let serializedData = JSON.stringify(data);
 
         let params = {
             KeyId: keyId,
-            Plaintext: serializedData
+            Plaintext: serializedData,
+            EncryptionContext: makeEncryptionContext(additionalContext)
         };
 
         let responseData = await this.kms.encrypt(params).promise();
 
-        return responseData.CiphertextBlob;
+        return responseData.CiphertextBlob.toString('base64');
     }
 
-    async decryptJsonData(ciphertext: string) {
+    async decryptJsonData(ciphertext: string, additionalContext?: string) {
         let params = {
-            CiphertextBlob: ciphertext
+            CiphertextBlob: new Buffer(ciphertext, 'base64'),
+            EncryptionContext: makeEncryptionContext(additionalContext)
         };
 
         let responseData = await this.kms.decrypt(params).promise();
@@ -41,4 +43,17 @@ export class KmsCrypto implements Crypto {
         return JSON.parse(serializedData);
     }
 
+}
+
+const commonEncryptionContext = {
+    serviceName: "simple-config-store",
+    serviceTag: "2TykS8ie0XxwjqNFWcCN"
+};
+
+function makeEncryptionContext(additionalContext?: string) {
+    if (additionalContext === undefined) {
+        return commonEncryptionContext;
+    } else {
+        return Object.assign({ additionalContext }, commonEncryptionContext);
+    }
 }
