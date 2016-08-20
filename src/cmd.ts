@@ -26,9 +26,6 @@ vorpal
         let value = args.value;
 
         await configStore.putValue(scope, key, value);
-        
-        this.log(typeof value);
-        this.log(key, value);
     });
 
 vorpal
@@ -38,6 +35,17 @@ vorpal
         let key = args.key;
         
         let value = await configStore.getValue(scope, key);
+
+        this.log(value);
+    });
+
+vorpal
+    .command('get-encypted <scope> <key>')
+    .action(async function(args) {
+        let scope = args.scope;
+        let key = args.key;
+        
+        let value = await configStore.getScopeEncryptedValue(scope, key);
 
         this.log(value);
     });

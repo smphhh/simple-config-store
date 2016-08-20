@@ -20,21 +20,34 @@ export class ConfigStore implements ConfigDataProvider {
         let scopeKeyId = this.getScopeKeyId(scope);
 
         let scopedKey = makeScopedKey(scope, key);
-        let storeCiphertextBlob = await this.dataStore.getValue(scopedKey);
-        let jsonData = await this.crypto.decryptJsonData(storeCiphertextBlob, scopedKey);
+        let ciphertextBlob = await this.dataStore.getValue(scopedKey);
+        let jsonData = await this.crypto.decryptJsonData(ciphertextBlob, scopedKey);
 
-        /*let clientCiphertextBlob = await this.crypto.encryptJsonData(jsonData, scopeKeyId);
-
-        return clientCiphertextBlob;*/
         return jsonData;
+    }
+
+    async getScopeEncryptedValue(scope: string, key: string) {
+        let scopeKeyId = this.getScopeKeyId(scope);
+        let scopedKey = makeScopedKey(scope, key);
+
+        let storeCiphertextBlob = await this.dataStore.getValue(scopedKey);
+
+        let clientCiphertextBlob = await this.crypto.reEncryptJsonData(
+            storeCiphertextBlob,
+            scopeKeyId,
+            scopedKey,
+            scopedKey
+        );
+
+        return clientCiphertextBlob;
     }
 
     async putValue(scope: string, key: string, value: string) {
         let scopedKey = makeScopedKey(scope, key);
 
-        let storeCiphertextBlob = await this.crypto.encryptJsonData(value, this.config.masterKeyId, scopedKey);
+        let ciphertextBlob = await this.crypto.encryptJsonData(value, this.config.masterKeyId, scopedKey);
 
-        await this.dataStore.setValue(scopedKey, storeCiphertextBlob);
+        await this.dataStore.setValue(scopedKey, ciphertextBlob);
     }
 
     private getScopeKeyId(scope: string) {

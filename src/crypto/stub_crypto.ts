@@ -34,6 +34,16 @@ export class StubCrypto implements Crypto {
         }
     }
 
+    async reEncryptJsonData(
+        sourceCiphertext: string,
+        destinationKeyId: string,
+        additionalSourceContext?: string,
+        additionalTargetContext?: string
+    ) {
+        let data = await this.decryptJsonData(sourceCiphertext);
+        return this.encryptJsonData(data, destinationKeyId);
+    }
+
     private static base64Encode(s: string) {
         return (new Buffer(s, 'utf8')).toString('base64');
     }

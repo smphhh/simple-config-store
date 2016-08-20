@@ -43,6 +43,23 @@ export class KmsCrypto implements Crypto {
         return JSON.parse(serializedData);
     }
 
+    async reEncryptJsonData(
+        sourceCiphertext: string,
+        destinationKeyId: string,
+        additionalSourceContext?: string,
+        additionalTargetContext?: string
+    ) {
+        let params = {
+            CiphertextBlob: new Buffer(sourceCiphertext, 'base64'),
+            DestinationKeyId: destinationKeyId,
+            SourceEncryptionContext: makeEncryptionContext(additionalSourceContext)
+        };
+
+        let response = await this.kms.reEncrypt(params).promise();
+
+        return response.CiphertextBlob.toString('base64');
+    }
+
 }
 
 const commonEncryptionContext = {

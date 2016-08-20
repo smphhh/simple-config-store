@@ -12,7 +12,7 @@ export function create() {
         configStore: {
             masterKeyId: masterKeyId,
             scopeKeyIds: new Map([
-                ['scope1', masterKeyId]
+                ['scope1', "99c7e837-dde3-43b7-971c-a134bb42b133"]
             ])
         },
         dynamoDBDataStore: {
