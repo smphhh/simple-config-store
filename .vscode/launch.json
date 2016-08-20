@@ -15,7 +15,8 @@
 			],
 			"env": {
 				"NODE_ENV": "development",
-				"DEBUG": "*"
+				"DEBUG": "*",
+				"AWS_PROFILE": "gio-development-user"
 			},
 			"externalConsole": false,
             "preLaunchTask": "build",
@@ -36,7 +37,8 @@
 			],
 			"env": {
 				"NODE_ENV": "development",
-				"DEBUG": "*"
+				"DEBUG": "*",
+				"AWS_PROFILE": "gio-development-user"
 			},
 			"externalConsole": true,
             "preLaunchTask": "build",
@@ -59,7 +61,11 @@
 			"preLaunchTask": "build",
 			"request": "launch",
 			"runtimeExecutable": null,
-			"env": { "NODE_ENV": "production", "DEBUG": "" },
+			"env": {
+				"NODE_ENV": "production",
+				"DEBUG": "",
+				"AWS_PROFILE": "gio-development-user"
+			},
 			"externalConsole": false,
 			"sourceMaps": true,
 			"outDir": "${workspaceRoot}/lib"
