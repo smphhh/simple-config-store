@@ -1,8 +1,27 @@
 
-function parseScopeKeyIds() {
-    return new Map([
-        ['scope1', 'a']
-    ]);
+function parseScopeKeyIds(scopeKeyIdData: string) {
+    if (typeof scopeKeyIdData !== 'string') {
+        return new Map();
+    }
+
+    let scopeKeyIds = new Map<string, string>();
+
+    for (let scopeKeyIdPair of scopeKeyIdData.split("\n")) {
+        if (scopeKeyIdPair.length === 0) {
+            // Skip empty rows
+            continue;
+        }
+
+        let pairData = scopeKeyIdPair.split(",");
+
+        if (pairData.length !== 2) {
+            throw new Error(`Invalid scope key-id pair data: ${scopeKeyIdPair}`);
+        }
+
+        scopeKeyIds.set(pairData[0], pairData[1]);
+    }
+        
+    return scopeKeyIds;
 }
 
 export function create() {
@@ -15,7 +34,7 @@ export function create() {
         },
         configStore: {
             masterKeyId: process.env['MASTER_KEY_ID'],
-            scopeKeyIds: parseScopeKeyIds()
+            scopeKeyIds: parseScopeKeyIds(process.env['SCOPE_KEY_IDS'])
         },
         dynamoDBDataStore: {
             endpoint: undefined,
