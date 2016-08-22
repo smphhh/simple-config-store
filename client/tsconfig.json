@@ -2,7 +2,9 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es2015",
-        "outDir": "build",
+        "rootDir": "..",
+        "outDir": "../build-client",
+        "declaration": true,
         "sourceMap": true,
         "rootDirs": [
             "src",
@@ -10,8 +12,7 @@
         ]
     },
     "include": [
-        "src",
-        "../common/src",
+        "src/**/*",
         "typings/**/*"
     ]
 }

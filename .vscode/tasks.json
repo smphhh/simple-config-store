@@ -23,7 +23,7 @@
         },
         {
             "taskName": "build",
-            "args": ["run", "build"],
+            "args": ["run", "make"],
             "isBuildCommand": true,
             "problemMatcher": "$tsc"
         },

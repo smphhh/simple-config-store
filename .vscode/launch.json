@@ -19,7 +19,7 @@
 				"AWS_PROFILE": "gio-development-user"
 			},
 			"externalConsole": false,
-            "preLaunchTask": "build-shell",
+            "preLaunchTask": "build-server",
 			"sourceMaps": true,
 			"outDir": "${workspaceRoot}/lib"
 		},
