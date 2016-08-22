@@ -1,0 +1,43 @@
+{
+  "name": "simple-config-store",
+  "version": "0.1.2",
+  "description": "Simple Config store",
+  "license": "MIT",
+  "keywords": [
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smphhh/simple-config-store"
+  },
+  "main": "lib/main.js",
+  "author": {
+    "name": "Samuli Holopainen",
+    "email": "samuli.holopainen@yahoo.com"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "cpr": "^2.0.0",
+    "mocha": "2.3.x",
+    "typescript": "next",
+    "typings": "^1.3.2"
+  },
+  "scripts": {
+    "cmd": "node lib/cmd.js",
+    "npm-version": "npm --version",
+    "start": "node lib/main.js",
+    "build": "npm run build-client && npm run build-server",
+    "build-common": "tsc -p common",
+    "build-client": "tsc -p client",
+    "make-client": "npm run build-common && npm run build-client && cpr client/build client/lib --overwrite --delete-first && cpr common/build client/lib --overwrite",
+    "build-server": "tsc -p server",
+    "make-server": "npm run build-common && npm run build-server && cpr server/build server/lib --overwrite --delete-first && cpr common/build server/lib --overwrite",
+    "test": "mocha lib/**/__tests__/**/*.js",
+    "typings-install-common": "cd common && typings install",
+    "typings-install-client": "cd client && typings install",
+    "typings-install-server": "cd server && typings install",
+    "typings-install": "npm run typings-install-common && npm run typings-install-client && npm run typings-install-server"
+  }
+}

@@ -12,6 +12,16 @@
             "args": ["install"]
         },
         {
+            "taskName": "build-client",
+            "args": ["run", "make-client"],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "taskName": "build-server",
+            "args": ["run", "make-server"],
+            "problemMatcher": "$tsc"
+        },
+        {
             "taskName": "build",
             "args": ["run", "build"],
             "isBuildCommand": true,
@@ -24,6 +34,10 @@
         {
             "taskName": "test",
             "args": ["run", "test"]
+        },
+        {
+            "taskName": "npm-version",
+            "args": ["--version"]
         }
     ]
 }

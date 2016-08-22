@@ -1,7 +1,7 @@
 {
-  "name": "simple-config-store",
+  "name": "simple-config-store-client",
   "version": "0.1.2",
-  "description": "Simple Config store",
+  "description": "TypeScript client for Simple Config store",
   "license": "MIT",
   "keywords": [
   ],
@@ -16,14 +16,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.5.1",
-    "bluebird": "^3.4.1",
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "knex": "^0.11.9",
-    "pg": "^6.0.3",
-    "simple-typed-rpc": "^0.4.0",
-    "sqlite3": "^3.1.4",
-    "vorpal": "^1.11.4"
+    "simple-typed-rpc": "^0.4.0"
   },
   "scripts": {
     "cmd": "node lib/cmd.js",

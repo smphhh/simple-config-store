@@ -28,7 +28,11 @@ export class Server {
             res.send("ok");
         });
 
-        app.post('/config_data_provider', createExpressResolver(createInterfaceDescriptorBackendProxy(ConfigDataProvider, this.configDataProvider)));
+        app.post('/config_data_provider/rpc', createExpressResolver(createInterfaceDescriptorBackendProxy(ConfigDataProvider, this.configDataProvider)));
+
+        app.get('/config_data_provider/rest', function (request, response) {
+            response.send("not_implemented");
+        });
 
         this.server = app.listen(this.config.port, () => {
             var host = this.server.address().address;

@@ -19,7 +19,7 @@
 				"AWS_PROFILE": "gio-development-user"
 			},
 			"externalConsole": false,
-            "preLaunchTask": "build",
+            "preLaunchTask": "build-shell",
 			"sourceMaps": true,
 			"outDir": "${workspaceRoot}/lib"
 		},
@@ -27,10 +27,10 @@
 			"name": "Launch shell",
 			"type": "node",
 			"request": "launch",
-			"program": "${workspaceRoot}/src/cmd.ts",
+			"program": "${workspaceRoot}/server/src/shell.ts",
 			"stopOnEntry": false,
 			"args": [],
-			"cwd": "${workspaceRoot}",
+			"cwd": "${workspaceRoot}/server",
 			"runtimeExecutable": null,
 			"runtimeArgs": [
 				"--nolazy"
@@ -41,9 +41,9 @@
 				"AWS_PROFILE": "gio-development-user"
 			},
 			"externalConsole": true,
-            "preLaunchTask": "build",
+            "preLaunchTask": "build-server",
 			"sourceMaps": true,
-			"outDir": "${workspaceRoot}/lib"
+			"outDir": "${workspaceRoot}/server/lib"
 		},
 		{
 			"name": "Attach",

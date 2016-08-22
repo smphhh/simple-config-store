@@ -3,13 +3,11 @@
         "module": "commonjs",
         "target": "es2015",
         "sourceMap": true,
-        "rootDirs": [
-            "src",
-            "../common/src"
-        ]
+        "rootDir": "../common/src",
+        "outDir": "src"
     },
     "include": [
-        "src/**/*",
-        "typings/**/*"
+        "../common/src/**/*",
+        "../common/typings/**/*"
     ]
 }
