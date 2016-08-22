@@ -6,8 +6,8 @@
         "rootDir": "src",
         "outDir": "build"
     },
-    "include": [
-        "src/**/*",
-        "typings/**/*"
+    "exclude": [
+        "npm",
+        "node_modules"
     ]
 }
