@@ -34,9 +34,8 @@
     "typings": "^1.3.2"
   },
   "scripts": {
-    "cmd": "node lib/cmd.js",
-    "npm-version": "npm --version",
-    "start": "node lib/main.js",
+    "shell": "node build/server/shell.js",
+    "start": "node build/server/main.js",
     "build": "tsc",
     "make": "npm run make-client && npm run make-server",
     "build-common": "tsc -p common",
@@ -44,7 +43,7 @@
     "make-client": "npm run build-client && cpr build-client/client/src client/lib/src --overwrite --delete-first && cpr build-client/common/src client/lib/src",
     "build-server": "tsc -p server",
     "make-server": "npm run build-server && cpr build-server/server/src server/lib/src --overwrite --delete-first && cpr build-server/common/src server/lib/src",
-    "test": "mocha lib/**/__tests__/**/*.js",
+    "test": "mocha build/**/__tests__/**/*.js",
     "typings-install": "typings install"
   }
 }
