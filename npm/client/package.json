@@ -18,9 +18,10 @@
     "aws-sdk": "^2.5.1",
     "simple-typed-rpc": "^0.4.0"
   },
+  "devDependencies": {
+    "typescript": "^1.8.10"
+  },
   "scripts": {
-    "cmd": "node lib/cmd.js",
-    "start": "node lib/main.js",
     "build": "tsc",
     "test": "mocha lib/**/__tests__/**/*.js",
     "typings-install": "typings install"

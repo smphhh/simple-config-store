@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2015",
+        "rootDir": "../../src",
+        "outDir": "lib"
+    },
+    "files": [
+        "../../src/client/main.ts",
+        "../../typings/index.d.ts"
+    ]
+}

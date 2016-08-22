@@ -13,7 +13,7 @@
         "*/lib": true,
         "obj/**": true,
         ".vs/**": true,
-        "*/typings": true,
+        "typings": true,
 		"*.sqlite3": true
 	},
     "typescript.tsdk": "node_modules/typescript/lib"
