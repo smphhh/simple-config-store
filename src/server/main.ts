@@ -3,7 +3,7 @@ import {createConfig} from './config'
 
 import {DynamoDBDataStore} from './data_store';
 import {ConfigStore} from './config_store';
-import {KmsCrypto} from './crypto';
+import {KmsCrypto} from '../common/crypto';
 import {Server} from './server';
 
 let config = createConfig(process.env['CONFIG_NAME'] || 'production');

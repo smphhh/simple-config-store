@@ -15,6 +15,15 @@
     "email": "samuli.holopainen@yahoo.com"
   },
   "dependencies": {
+    "aws-sdk": "^2.5.1",
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "knex": "^0.11.9",
+    "pg": "^6.0.3",
+    "simple-typed-rpc": "^0.4.0",
+    "sqlite3": "^3.1.4",
+    "vorpal": "^1.11.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -28,7 +37,7 @@
     "cmd": "node lib/cmd.js",
     "npm-version": "npm --version",
     "start": "node lib/main.js",
-    "build": "npm run build-client && npm run build-server",
+    "build": "tsc",
     "make": "npm run make-client && npm run make-server",
     "build-common": "tsc -p common",
     "build-client": "tsc -p client",
@@ -36,9 +45,6 @@
     "build-server": "tsc -p server",
     "make-server": "npm run build-server && cpr build-server/server/src server/lib/src --overwrite --delete-first && cpr build-server/common/src server/lib/src",
     "test": "mocha lib/**/__tests__/**/*.js",
-    "typings-install-common": "cd common && typings install",
-    "typings-install-client": "cd client && typings install",
-    "typings-install-server": "cd server && typings install",
-    "typings-install": "npm run typings-install-common && npm run typings-install-client && npm run typings-install-server"
+    "typings-install": "typings install"
   }
 }

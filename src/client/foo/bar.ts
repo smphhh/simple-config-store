@@ -1,4 +1,4 @@
-import {Crypto} from '../crypto';
+import {Crypto} from '../../common/crypto';
 
 //let crypto = new StubCrypto({ a: 'a' });
 

@@ -1,7 +1,7 @@
 {
-  "name": "simple-config-store",
+  "name": "simple-config-store-server",
   "version": "0.1.2",
-  "description": "Simple Config store",
+  "description": "Simple Config store server",
   "license": "MIT",
   "keywords": [
   ],

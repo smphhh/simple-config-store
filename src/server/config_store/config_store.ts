@@ -1,5 +1,5 @@
 
-import {Crypto} from '../crypto';
+import {Crypto} from '../../common/crypto';
 import {DataStore} from '../data_store';
 import {ConfigDataProvider} from '../service_interface';
 

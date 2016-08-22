@@ -5,5 +5,9 @@
         "sourceMap": true,
         "rootDir": "src",
         "outDir": "build"
-    }
+    },
+    "include": [
+        "src/**/*",
+        "typings/**/*"
+    ]
 }
