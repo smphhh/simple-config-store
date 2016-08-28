@@ -25,7 +25,7 @@ vorpal
         let key = args.key;
         let value = args.value;
 
-        await configStore.putValue(scope, key, value);
+        await configStore.putScopeValue(scope, key, value);
     });
 
 vorpal
@@ -34,9 +34,16 @@ vorpal
         let scope = args.scope;
         let key = args.key;
         
-        let value = await configStore.getValue(scope, key);
+        let value = await configStore.getScopeValue(scope, key);
 
         this.log(value);
+    });
+
+vorpal
+    .command('get-scope <scope>')
+    .action(async function (args) {
+        let values = await configStore.getAllScopeValues(args.scope);
+        this.log(values);
     });
 
 vorpal

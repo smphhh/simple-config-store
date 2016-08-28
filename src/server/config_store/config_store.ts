@@ -16,12 +16,25 @@ export class ConfigStore implements ConfigDataProvider {
     ) {
     }
 
-    async getValue(scope: string, key: string) {
+    async getScopeValue(scope: string, key: string) {
         let scopeKeyId = this.getScopeKeyId(scope);
 
         let scopedKey = makeScopedKey(scope, key);
         let ciphertextBlob = await this.dataStore.getScopeValue(scope, key);
         let jsonData = await this.crypto.decryptJsonData(ciphertextBlob, scopedKey);
+
+        return jsonData;
+    }
+
+    async getAllScopeValues(scope: string) {
+        let scopeKeyId = this.getScopeKeyId(scope);
+
+        let ciphertextData = await this.dataStore.getAllScopeValues(scope);
+        let jsonData = {} as { [key: string]: string };
+        for (let name in ciphertextData) {
+            let scopedName = makeScopedKey(scope, name);
+            jsonData[name] = await this.crypto.decryptJsonData(ciphertextData[name], scopedName);
+        }
 
         return jsonData;
     }
@@ -42,7 +55,7 @@ export class ConfigStore implements ConfigDataProvider {
         return clientCiphertextBlob;
     }
 
-    async putValue(scope: string, key: string, value: string) {
+    async putScopeValue(scope: string, key: string, value: string) {
         let scopedKey = makeScopedKey(scope, key);
 
         let ciphertextBlob = await this.crypto.encryptJsonData(value, this.config.masterKeyId, scopedKey);
