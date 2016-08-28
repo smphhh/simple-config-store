@@ -95,8 +95,8 @@ export class DynamoDBDataStore implements DataStore {
         }
 
         await this.dynamoDB.createTable({
-            TableName: this.config.tableName,
-            AttributeDefinitions: [
+            "TableName": this.config.tableName,
+            "AttributeDefinitions": [
                 {
                     "AttributeName": "scopedName",
                     "AttributeType": "S"
@@ -110,36 +110,36 @@ export class DynamoDBDataStore implements DataStore {
                     "AttributeType": "S"
                 }
             ],
-            KeySchema: [
+            "KeySchema": [
                 {
-                    AttributeName: 'scopedName',
-                    KeyType: 'HASH'
+                    "AttributeName": "scopedName",
+                    "KeyType": "HASH"
                 },
                 {
-                    AttributeName: 'version',
-                    KeyType: 'RANGE'
+                    "AttributeName": "version",
+                    "KeyType": "RANGE"
                 }
             ],
-            ProvisionedThroughput: {
-                ReadCapacityUnits: 1,
-                WriteCapacityUnits: 1,
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1,
             },
-            GlobalSecondaryIndexes: [
+            "GlobalSecondaryIndexes": [
                 {
-                    IndexName: scopeNameIndexName,
-                    KeySchema: [
+                    "IndexName": scopeNameIndexName,
+                    "KeySchema": [
                         {
-                            AttributeName: 'indexScope',
-                            KeyType: 'HASH'
+                            "AttributeName": "indexScope",
+                            "KeyType": "HASH"
                         }
                     ],
-                    Projection: {
-                        ProjectionType: 'KEYS_ONLY'
+                    "Projection": {
+                        "ProjectionType": "KEYS_ONLY"
                     },
-                    ProvisionedThroughput: {
-                        ReadCapacityUnits: 1,
-                        WriteCapacityUnits: 1,
-                    },
+                    "ProvisionedThroughput": {
+                        "ReadCapacityUnits": 1,
+                        "WriteCapacityUnits": 1,
+                    }
                 }
             ]
         }).promise();
