@@ -16,11 +16,11 @@ export class ConfigStore implements ConfigDataProvider {
     ) {
     }
 
-    async getScopeValue(scope: string, key: string) {
+    async getScopeValue(scope: string, name: string) {
         let scopeKeyId = this.getScopeKeyId(scope);
 
-        let scopedKey = makeScopedKey(scope, key);
-        let ciphertextBlob = await this.dataStore.getScopeValue(scope, key);
+        let scopedKey = makeScopedKey(scope, name);
+        let ciphertextBlob = await this.dataStore.getScopeValue(scope, name);
         let jsonData = await this.crypto.decryptJsonData(ciphertextBlob, scopedKey);
 
         return jsonData;
@@ -39,11 +39,11 @@ export class ConfigStore implements ConfigDataProvider {
         return jsonData;
     }
 
-    async getScopeEncryptedValue(scope: string, key: string) {
+    async getScopeEncryptedValue(scope: string, name: string) {
         let scopeKeyId = this.getScopeKeyId(scope);
-        let scopedKey = makeScopedKey(scope, key);
+        let scopedKey = makeScopedKey(scope, name);
 
-        let storeCiphertextBlob = await this.dataStore.getScopeValue(scope, key);
+        let storeCiphertextBlob = await this.dataStore.getScopeValue(scope, name);
 
         let clientCiphertextBlob = await this.crypto.reEncryptJsonData(
             storeCiphertextBlob,
@@ -52,7 +52,32 @@ export class ConfigStore implements ConfigDataProvider {
             scopedKey
         );
 
-        return clientCiphertextBlob;
+        return {
+            encryptedValue: clientCiphertextBlob
+        };
+    }
+
+    async getAllScopeEncryptedValues(scope: string) {
+        let scopeKeyId = this.getScopeKeyId(scope);
+
+        let storeCiphertextData = await this.dataStore.getAllScopeValues(scope);
+        let jsonData = {} as { [key: string]: string };
+        
+        for (let name in storeCiphertextData) {
+            let scopedName = makeScopedKey(scope, name);
+            let clientCiphertextBlob = await this.crypto.reEncryptJsonData(
+                storeCiphertextData[name],
+                scopeKeyId,
+                scopedName,
+                scopedName
+            );
+
+            jsonData[name] = clientCiphertextBlob;
+        }
+
+        return {
+            encryptedValues: jsonData
+        };
     }
 
     async putScopeValue(scope: string, key: string, value: string) {
