@@ -1,5 +1,6 @@
 
 export interface DataStore {
-    setValue(key: string, value: string): Promise<void>;
-    getValue(key: string): Promise<string>;
+    setScopeValue(scope: string, name: string, value: string): Promise<void>;
+    getScopeValue(scope: string, name: string): Promise<string>;
+    getAllScopeValues(scope: string): Promise<{ [key: string]: string }>;
 }

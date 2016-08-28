@@ -20,7 +20,7 @@ export class ConfigStore implements ConfigDataProvider {
         let scopeKeyId = this.getScopeKeyId(scope);
 
         let scopedKey = makeScopedKey(scope, key);
-        let ciphertextBlob = await this.dataStore.getValue(scopedKey);
+        let ciphertextBlob = await this.dataStore.getScopeValue(scope, key);
         let jsonData = await this.crypto.decryptJsonData(ciphertextBlob, scopedKey);
 
         return jsonData;
@@ -30,7 +30,7 @@ export class ConfigStore implements ConfigDataProvider {
         let scopeKeyId = this.getScopeKeyId(scope);
         let scopedKey = makeScopedKey(scope, key);
 
-        let storeCiphertextBlob = await this.dataStore.getValue(scopedKey);
+        let storeCiphertextBlob = await this.dataStore.getScopeValue(scope, key);
 
         let clientCiphertextBlob = await this.crypto.reEncryptJsonData(
             storeCiphertextBlob,
@@ -47,7 +47,7 @@ export class ConfigStore implements ConfigDataProvider {
 
         let ciphertextBlob = await this.crypto.encryptJsonData(value, this.config.masterKeyId, scopedKey);
 
-        await this.dataStore.setValue(scopedKey, ciphertextBlob);
+        await this.dataStore.setScopeValue(scope, key, ciphertextBlob);
     }
 
     private getScopeKeyId(scope: string) {

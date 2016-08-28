@@ -1,3 +1,3 @@
 
-export {DynamoDBDataStore} from './dynamodb_data_store';
+export {DynamoDBDataStore} from './dynamodb/dynamodb_data_store';
 export {DataStore} from './interface';
