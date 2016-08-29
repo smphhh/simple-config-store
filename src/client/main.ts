@@ -1,2 +1,4 @@
 
-import {crypto} from './foo';
+import {ConfigStoreClient} from './client';
+
+

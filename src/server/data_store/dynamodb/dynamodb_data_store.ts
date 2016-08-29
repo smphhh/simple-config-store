@@ -1,6 +1,8 @@
 
 let AWS = require('aws-sdk');
 
+import {makeScopedName} from '../../../common/utils';
+
 import {DataStore} from '../interface';
 
 export interface Config {
@@ -157,8 +159,4 @@ export class DynamoDBDataStore implements DataStore {
 }
 
 let scopeNameIndexName = "ScopeNameIndex";
-
-function makeScopedName(scope: string, name: string) {
-    return `${scope}/${name}`;
-}
 
