@@ -7,7 +7,7 @@ import {createConfig} from '../config';
 import {DynamoDBDataStore} from '../data_store';
 import {ConfigStore} from '../config_store';
 import {KmsCrypto} from '../crypto';
-import {ConfigStoreClient} from '../client';
+import {ConfigStoreClient} from '../client/client';
 import {Server} from '../server';
 import {ConfigDataProvider} from '../service_interface';
 
