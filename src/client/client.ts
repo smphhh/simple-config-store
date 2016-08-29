@@ -1,9 +1,9 @@
 
 import {createInterfaceDescriptorFrontendProxy} from 'simple-typed-rpc';
 
-import {Crypto} from '../common/crypto';
-import {makeScopedName} from '../common/utils';
-import {ConfigDataProvider} from '../server/service_interface';
+import {Crypto} from '../crypto';
+import {makeScopedName} from '../utils';
+import {ConfigDataProvider} from '../service_interface';
 
 export interface Config {
     serverEndpoint: string;

@@ -1,7 +1,7 @@
 
 let AWS = require('aws-sdk');
 
-import {makeScopedName} from '../../../common/utils';
+import {makeScopedName} from '../../utils';
 
 import {DataStore} from '../interface';
 

@@ -1,6 +1,6 @@
 
-import {Crypto} from '../../common/crypto';
-import {makeScopedName} from '../../common/utils';
+import {Crypto} from '../crypto';
+import {makeScopedName} from '../utils';
 import {DataStore} from '../data_store';
 import {ConfigDataProvider} from '../service_interface';
 
