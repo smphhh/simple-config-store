@@ -35,8 +35,8 @@
     "typings": "^1.3.2"
   },
   "scripts": {
-    "shell": "node build/server/shell.js",
-    "start": "node build/server/main.js",
+    "shell": "node build/shell.js",
+    "start": "node build/main.js",
     "build": "tsc",
     "make": "npm run make-client && npm run make-server",
     "build-common": "tsc -p common",
