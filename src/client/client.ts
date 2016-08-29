@@ -31,6 +31,8 @@ export class ConfigStoreClient {
             let value = await this.crypto.decryptJsonData(data.encryptedValues[name], scopedName);
             values[name] = value;
         }
+
+        return values;
     }
 
 }

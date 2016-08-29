@@ -46,4 +46,15 @@ describe("Client-server integration", function () {
         expect(await client.getScopeValue("scope2", "foo")).to.equal("scope2 foo");
     });
 
+    it("should allow retrieving all valies in a scope", async function () {
+        await configStore.setScopeValue("scope1", "foo", "scope1 foo");
+        await configStore.setScopeValue("scope1", "bar", "scope1 bar");
+        await configStore.setScopeValue("scope2", "foo", "scope2 foo");
+
+        let values = await client.getAllScopeValues("scope1");
+
+        expect(values).to.deep.equal({ foo: "scope1 foo", bar: "scope1 bar" });
+
+    });
+
 });
