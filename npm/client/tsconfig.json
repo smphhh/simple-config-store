@@ -7,7 +7,7 @@
         "declaration": true
     },
     "files": [
-        "../../src/client/main.ts",
+        "../../src/client/index.ts",
         "../../typings/index.d.ts"
     ]
 }
