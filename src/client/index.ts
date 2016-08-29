@@ -1,0 +1,1 @@
+export {ConfigStoreClient} from './client';

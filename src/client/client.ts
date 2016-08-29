@@ -6,7 +6,6 @@ import {makeScopedName} from '../utils';
 import {ConfigDataProvider} from '../service_interface';
 
 export interface Config {
-    serverEndpoint: string;
 }
 
 export class ConfigStoreClient {
@@ -15,7 +14,6 @@ export class ConfigStoreClient {
         private crypto: Crypto,
         private dataProvider: ConfigDataProvider
     ) {
-
     }
 
     async getScopeValue(scope: string, name: string) {

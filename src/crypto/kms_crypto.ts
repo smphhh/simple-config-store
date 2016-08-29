@@ -52,7 +52,8 @@ export class KmsCrypto implements Crypto {
         let params = {
             CiphertextBlob: new Buffer(sourceCiphertext, 'base64'),
             DestinationKeyId: destinationKeyId,
-            SourceEncryptionContext: makeEncryptionContext(additionalSourceContext)
+            SourceEncryptionContext: makeEncryptionContext(additionalSourceContext),
+            DestinationEncryptionContext: makeEncryptionContext(additionalTargetContext)
         };
 
         let response = await this.kms.reEncrypt(params).promise();

@@ -25,7 +25,7 @@ vorpal
         let key = args.key;
         let value = args.value;
 
-        await configStore.putScopeValue(scope, key, value);
+        await configStore.setScopeValue(scope, key, value);
     });
 
 vorpal

@@ -28,7 +28,7 @@ export class Server {
             res.send("ok");
         });
 
-        app.post('/config_data_provider/rpc', createExpressResolver(createInterfaceDescriptorBackendProxy(ConfigDataProvider, this.configDataProvider)));
+        app.post('/config_data_provider/rpc/', createExpressResolver(createInterfaceDescriptorBackendProxy(ConfigDataProvider, configDataProvider)));
 
         app.get('/config_data_provider/rest', function (request, response) {
             response.send("not_implemented");
@@ -40,6 +40,12 @@ export class Server {
 
             console.log('Example app listening at http://%s:%s', host, port);
         });
+
+        console.log(this.server.address());
+    }
+
+    getPort() {
+        return this.server.address().port;
     }
 
 }
