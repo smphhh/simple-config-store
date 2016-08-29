@@ -1,15 +1,14 @@
 {
   "name": "simple-config-store-client",
-  "version": "0.1.2",
-  "description": "TypeScript client for Simple Config store",
+  "version": "0.1.0",
+  "description": "Node/TypeScript client for simple-config-store-server",
   "license": "MIT",
-  "keywords": [
-  ],
+  "keywords": ["config", "store", "typescript", "encryption"],
   "repository": {
     "type": "git",
     "url": "https://github.com/smphhh/simple-config-store"
   },
-  "main": "lib/main.js",
+  "main": "lib/client/index.js",
   "author": {
     "name": "Samuli Holopainen",
     "email": "samuli.holopainen@yahoo.com"
@@ -22,9 +21,7 @@
     "typescript": "^1.8.10"
   },
   "scripts": {
-    "build": "tsc",
-    "test": "mocha lib/**/__tests__/**/*.js",
-    "typings-install": "typings install"
+    "build": "tsc"
   },
-  "typings": "./lib/index.d.ts"
+  "typings": "./lib/client/index.d.ts"
 }

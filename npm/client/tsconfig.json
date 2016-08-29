@@ -3,7 +3,8 @@
         "module": "commonjs",
         "target": "es2015",
         "rootDir": "../../src",
-        "outDir": "lib"
+        "outDir": "lib",
+        "declaration": true
     },
     "files": [
         "../../src/client/main.ts",

@@ -1,1 +1,1 @@
-export {ConfigStoreClient} from './client';
+export {createKmsRpcConfigStoreClient} from './main';
