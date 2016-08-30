@@ -25,7 +25,10 @@ export class StubCrypto implements Crypto {
             throw new Error("Invalid ciphertext blob");
         }
 
-        let [keyId, key, serializedData] = parts.map(StubCrypto.base64Decode);
+        let decodedParts = parts.map(StubCrypto.base64Decode);
+        let keyId = decodedParts[0];
+        let key = decodedParts[1];
+        let serializedData = decodedParts[2]; 
 
         if (keyId.length > 0 && key.length > 0 && this.getKey(keyId) === key) {
             return JSON.parse(serializedData);
