@@ -1,6 +1,6 @@
 {
   "name": "simple-config-store-client",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Node/TypeScript client for simple-config-store-server",
   "license": "MIT",
   "keywords": ["config", "store", "typescript", "encryption"],
