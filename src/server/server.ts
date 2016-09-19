@@ -2,7 +2,7 @@
 let bodyParser = require('body-parser');
 import * as express from 'express';
 import * as http from 'http';
-
+import { ParameterParserError, QueryParser } from 'simple-typed-validator';
 import {createExpressResolver, createInterfaceDescriptorBackendProxy} from 'simple-typed-rpc';
 
 import {ConfigDataProvider} from '../service_interface';
@@ -30,8 +30,28 @@ export class Server {
 
         app.post('/config_data_provider/rpc/', createExpressResolver(createInterfaceDescriptorBackendProxy(ConfigDataProvider, configDataProvider)));
 
-        app.get('/config_data_provider/rest', function (request, response) {
-            response.send("not_implemented");
+        app.get('/config_data_provider/rest/all-scope-values/', async function (request: express.Request, response: express.Response) {
+            let parser = new QueryParser(request.query);
+
+            try {
+                let scope = parser.parse('scope')
+                    .asString()
+                    .require()
+                    .getValue();
+
+                let data = await configDataProvider.getAllScopeEncryptedValues(scope);
+
+                response.json(data);
+
+            } catch (error) {
+                if (error instanceof ParameterParserError) {
+                    response.status(400).json({
+                        error: error.message
+                    });
+                } else {
+                    throw error;
+                }                 
+            }
         });
 
         this.server = app.listen(this.config.port, () => {

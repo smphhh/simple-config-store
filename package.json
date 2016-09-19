@@ -4,8 +4,7 @@
   "description": "Simple Config store",
   "license": "MIT",
   "private": true,
-  "keywords": [
-  ],
+  "keywords": [],
   "repository": {
     "type": "git",
     "url": "https://github.com/smphhh/simple-config-store"
@@ -16,14 +15,16 @@
     "email": "samuli.holopainen@yahoo.com"
   },
   "dependencies": {
-    "aws-sdk": "^2.5.1",
-    "bluebird": "^3.4.1",
+    "aws-sdk": "^2.6.3",
+    "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "knex": "^0.11.9",
     "pg": "^6.0.3",
     "simple-typed-rpc": "^0.4.0",
+    "simple-typed-validator": "^0.1.0",
     "sqlite3": "^3.1.4",
+    "typings": "^1.3.3",
     "vorpal": "^1.11.4"
   },
   "devDependencies": {
@@ -31,7 +32,9 @@
     "chai-as-promised": "^5.3.0",
     "cpr": "^2.0.0",
     "mocha": "2.3.x",
-    "typescript": "^1.8.10",
+    "node-fetch": "^1.6.1",
+    "typemoq": "^0.3.3",
+    "typescript": "^2.0.2",
     "typings": "^1.3.2"
   },
   "scripts": {
